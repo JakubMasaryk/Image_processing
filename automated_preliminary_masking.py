@@ -1,15 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # ## __Preliminary Cell Segmentation__
 
 # #### __Libraries and Image Path__
 
 # * __Libraries__
-
-# In[517]:
-
-
 import cv2 as cv
 import numpy as np
 import pandas as pd
@@ -17,22 +10,12 @@ import os
 from zipfile import ZipFile
 import matplotlib.pyplot as plt
 
-
 # * __image path__
-
-# In[320]:
-
-
-path_to_image_gfp= r"D:\TS_first_screen\data\20240521_Plate_4D_redistributed_images\redistributed_images\20240521_A05_w2\20240521_A05_w2.TIFTimePoint_4.TIF"
-
+path_to_image_gfp= r""
 
 # #### __Functions__
 
 # * __individual image-processing functions__
-
-# In[614]:
-
-
 def img_load_and_16_to_8_bit_conversion(path):
     try:
         #load
@@ -124,12 +107,7 @@ def cell_separation(image, threshold_fraction_of_maximum= 0.5):
     except Exception as ex:
         raise RuntimeError(f"Cell separation FAILED. Original error: {ex}")
 
-
 # * __compiled function: input image to original image and binary mask__
-
-# In[616]:
-
-
 def preliminary_cell_segmentation(path_to_image, 
                                   kernel_for_background_correction= 151, 
                                   contrast= 2, 
@@ -169,11 +147,7 @@ def preliminary_cell_segmentation(path_to_image,
 
 
 # * __export for CVAT: original image plus individual-object masks__
-
-# In[607]:
-
-
-def export_for_CVAT(output_pathway= r"C:\Users\Jakub\Desktop",
+def export_for_CVAT(output_pathway= r"",
                     folder_name= 'test_folder',
                     image_name= 'Image1',
                     original_image= original_image,
@@ -217,18 +191,9 @@ def export_for_CVAT(output_pathway= r"C:\Users\Jakub\Desktop",
 # ## __Single-image segmentation__
 
 # * __preliminary segmentation__
-
-# In[328]:
-
-
 original_image, mask= preliminary_cell_segmentation(path_to_image_gfp)
 
-
 # * __test visual__
-
-# In[642]:
-
-
 fig, ax= plt.subplots(1, 2, figsize= (30, 15))
 
 ax[0].imshow(contrast_brightness_adjustment(original_image, 2, 100),
@@ -239,11 +204,6 @@ ax[1].imshow(mask,
              cmap= 'gray')
 ax[1].set_title('segmented cells', weight= 'bold', fontsize= 16)
 
-
 # * __export for CVAT__
-
-# In[618]:
-
-
 export_for_CVAT()
 
