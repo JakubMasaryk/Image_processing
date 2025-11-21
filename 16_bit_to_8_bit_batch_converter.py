@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # ### __Training dataset batch pre-processing (1)__
 
 # #### __conversion from 16-bit to 8-bit images__
@@ -10,33 +7,19 @@
 # * __define source__ and __output folders__
 
 # #### __libraries__
-
-# In[6]:
-
-
 import cv2 as cv
 import numpy as np
 import pandas as pd
 import os
 
-
 # #### __inputs__
-
-# In[8]:
-
-
 #16-bit images (to be converted)
-source_folder= r"C:\Users\Jakub\Desktop\CNN_training_images\class3_CAAC\16bit_for_training"
+source_folder= r""
 
 #storage for 8-bit images (converted)
-output_folder= r"C:\Users\Jakub\Desktop\CNN_training_images\class3_CAAC\8bit_for_cvat_annotation"
-
+output_folder= r""
 
 # #### __function__
-
-# In[10]:
-
-
 def _16_to_8_bit_batch_converter(input_folder, output_folder, alpha= 1, beta= 0):
     
     for file in os.listdir(input_folder):
@@ -61,17 +44,13 @@ def _16_to_8_bit_batch_converter(input_folder, output_folder, alpha= 1, beta= 0)
 
 
 # #### __batch conversion__
-
-# In[12]:
-
-
 # _16_to_8_bit_batch_converter(source_folder,
 #                              output_folder,
 #                              2,
 #                              100)
 
 
-# In[ ]:
+
 
 
 
