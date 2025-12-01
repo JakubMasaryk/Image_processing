@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # ## __StackReg for timelapse fluorescent microscopy__ 
 
 # #### __Description__
@@ -23,23 +20,14 @@
 # * __fps__: frames-per-second for the output video (_default= 10_)
 
 # #### __Libraries__
-
-# In[266]:
-
-
 import cv2 as cv
 import numpy as np
 import os
 from pystackreg import StackReg
 
-
 # --------------------------------------------------------------------------------
 
 # #### __StackReg Function__
-
-# In[269]:
-
-
 def stack_reg_video(input_path,
                     reg_type= 'rigid_body',
                     reference= 'previous',
@@ -120,14 +108,9 @@ def stack_reg_video(input_path,
     #release
     registered_stack_output.release()
 
-
 # --------------------------------------------------------------------------------
 
 # #### __StackReg__
 # * with __default params__
-
-# In[272]:
-
-
 stack_reg_video(input_path= r"C:\Users\Jakub\Desktop\test_video.avi")
 
