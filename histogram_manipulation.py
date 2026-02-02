@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # ### __Histogram Modifications__
 
 # #### __Description__
@@ -25,14 +22,9 @@
 # >- __'False'__: returns an image-array
 
 # #### __Histogram Manipulations__
-
 # ![Alt text](histogram_manipulations.png)
 
 # #### __Libraries__
-
-# In[18]:
-
-
 import cv2 as cv
 import numpy as np
 import os
@@ -42,10 +34,6 @@ from pathlib import Path
 
 
 # #### __Functions__
-
-# In[20]:
-
-
 #single image
 def histogram_manipulation_single_frame(path_to_image,
                                         histogram_manipulation= 'stretch',
@@ -182,10 +170,6 @@ def histogram_manipulation_batch(path_to_image_folder,
 
 
 # #### __Single Image__
-
-# In[34]:
-
-
 # histogram_manipulation_single_frame(path_to_image= r"",
 #                                     histogram_manipulation= 'stretch',
 #                                     clahe_clip_limit= 2,
@@ -194,12 +178,7 @@ def histogram_manipulation_batch(path_to_image_folder,
 
 
 # #### __Multiple Images__
-
-# In[36]:
-
-
 # histogram_manipulation_batch(r"",
 #                              histogram_manipulation= 'stretch',
 #                              clahe_clip_limit= 2,
 #                              clahe_grid_size= 15,)
-
