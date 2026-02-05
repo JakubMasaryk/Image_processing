@@ -130,13 +130,11 @@ def histogram_manipulation_single_frame(path_to_image,
             raise RuntimeError(f"failed to create output path and export the modified image'{output_path}': {ex}")
     else:
         return modified_img
-    
+
+
 #batch of images (folder)
 def histogram_manipulation_batch(path_to_image_folder,
-                                 histogram_manipulation= 'stretch',
-                                 clahe_clip_limit= 2,
-                                 clahe_grid_size= 15,
-                                 export= False):
+                                 **kwargs):
     
     #check input path
     if not os.path.exists(path_to_image_folder):
@@ -144,7 +142,7 @@ def histogram_manipulation_batch(path_to_image_folder,
         
     #create an output folder within the input folder (prefix according to the histogram modification)
     try:
-        output_pathfolder= os.path.join(path_to_image_folder, f'{histogram_manipulation}_output_folder')
+        output_pathfolder= os.path.join(path_to_image_folder, f'{kwargs["histogram_manipulation"]}_output_folder')
         os.makedirs(output_pathfolder, exist_ok=True)
     except Exception as ex:
         raise RuntimeError(f"failed to createthe output folder '{output_path}': {ex}")
@@ -158,10 +156,7 @@ def histogram_manipulation_batch(path_to_image_folder,
         #modify histogram for each image and export to the output file (within input file)
         try:
             modified_img= histogram_manipulation_single_frame(path_to_image= path_to_image_file,
-                                                              histogram_manipulation= histogram_manipulation,
-                                                              clahe_clip_limit= clahe_clip_limit,
-                                                              clahe_grid_size= clahe_grid_size,
-                                                              export= export)
+                                                              **kwargs)
             output_path= os.path.join(output_pathfolder, image) #full output path for specific image
             cv.imwrite(output_path, modified_img)
             
@@ -181,4 +176,5 @@ def histogram_manipulation_batch(path_to_image_folder,
 # histogram_manipulation_batch(r"",
 #                              histogram_manipulation= 'stretch',
 #                              clahe_clip_limit= 2,
-#                              clahe_grid_size= 15,)
+#                              clahe_grid_size= 15,
+#                              export= False)
